@@ -9,21 +9,14 @@ class AppController extends Controller
 {
     public function homepage()
     {
-
-
-        // if(session()->has('admin'))
-        // {
-        //     $user = session()->get('admin');
-        //     $exist = HomeSetting::where('user_id', '=', $user->id)->first();
-        //     $id = $exist?$exist->id:13;
-        // }else{
-        //     $id = 13;
-        // }
-
-        // $data=HomeSetting::find($id);
-
-
-
-        return view('frontend.homepage');
-}
+    return view('frontend.homepage');
+    }
+    public function aboutus()
+    {
+    return view('frontend.aboutus.viewaboutus');
+    }
+    public function features()
+    {
+    return view('frontend.features.viewfeatures');
+    }
 }

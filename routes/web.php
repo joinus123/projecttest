@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\FaqpageController;
 use App\Http\Controllers\admin\TestinomialController;
 use App\Http\Controllers\admin\ContactusController;
+use App\Http\Controllers\frontend\AppController;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -22,10 +23,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.homepage');
-});
 
+
+Route::get('/homepage', [AppController::class, 'homepage'])->name('homepage');
+Route::get('/aboutus', [AppController::class, 'aboutus'])->name('about-us');
+Route::get('/features', [AppController::class, 'features'])->name('view-features');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->name('dashboard');

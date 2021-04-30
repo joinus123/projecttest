@@ -50,17 +50,17 @@
                               <div class="collapse navbar-collapse" id="navbarContent">
                                  <ul class="navbar-nav nav-fill w-100">
                                     <li class="nav-item">
-                                       <a href="" role="button" class="btn btn-default">Home</a>
+                                       <a href="{{ route('homepage') }}" role="button" class="btn btn-default">Home</a>
                                     </li>
                                     <li class="nav-item">
 
-                                          <a href="" role="button" class="btn btn-default">About Who Cares</a>
+                                          <a href="{{ route('about-us') }}" role="button" class="btn btn-default">About Who Cares</a>
 
 
                                     </li>
                                     <li class="nav-item">
 
-                                          <a href="" role="button" class="btn btn-default">Our Features</a>
+                                          <a href="{{ route('view-features') }}" role="button" class="btn btn-default">Our Features</a>
 
 
                                     </li>
@@ -159,7 +159,7 @@
                  </div>
                  <div class="col-md-3 pt-40">
                     <h4>QUICK LINKS</h4>
-                    <p><a href="">HOME</a></p>
+                    <p><a href="{{ route('homepage') }}">HOME</a></p>
                     <p><a href="">MESSAGE</a></p>
                     <p><a href="">REGISTRY</a></p>
                     <p><a href="">PROFILE</a></p>
