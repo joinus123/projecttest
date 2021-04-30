@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Testinomial;
 use Illuminate\Http\Request;
 
+use Validate;
 class TestinomialController extends Controller
 {
     public function  testinomial(Request $request){
@@ -14,18 +15,28 @@ class TestinomialController extends Controller
     public function  addtestinomial(Request $request){
         return view('admin.dashboard.pages.addtestinomial');
     }
-                public function  edittestinomial(Request $request,$id){
+                public function  edittestinomial($id){
                 $testinomial['testinomial']=Testinomial::find($id);
                 return view('admin.dashboard.pages.edittestinomial',$testinomial);
             }
          public function  submittestinomial(Request $request){
 
-        $testinomial = [
+
+
+            $testinomial = request()->validate([
+
+                'testimonials_name'=> 'required',
+                'testimonials_text'=> 'required',
+                'testinomials_image'=> 'required',
+
+            ]);
+
+             $testinomial = [
 
 
 
-            'testinomials_name'=>$request->testimonials_name,
-            'testinomials_text'=>$request->testimonials_text,
+                'testinomials_name'=>$request->testimonials_name,
+                'testinomials_text'=>$request->testimonials_text,
 
 
             ];
@@ -42,9 +53,10 @@ class TestinomialController extends Controller
             //   dd($Homepage);
 
 
-            return redirect()->route('testinomial')->withSuccess('Great! Data successfully update with validation.');
+            return redirect()->route('testinomial')->withSuccess('Great! Data successfully insert with validation.');
 }
            public function updatetestinomial(Request $request){
+
 
 
 
@@ -63,8 +75,12 @@ class TestinomialController extends Controller
 
      $testinomial->save();
      return redirect()->route('testinomial',$request->id)->withSuccess('Great! Record Has been update successfully');
+ }
+ public function deletetestinomial(Request $request ,$id)
+ {
+  $delete=Testinomial::find($id)->delete();
 
-
-     }
+  return  redirect()->route('testinomial',$delete)->withSuccess('Great! Record Has been Delete successfully ');
+ }
 
 }

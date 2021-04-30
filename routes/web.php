@@ -41,12 +41,21 @@ Route::get('/registry', [DashboardController::class, 'registry'])->name('registr
 Route::get('/userprofile', [DashboardController::class, 'userprofile'])->name('userprofile');
 Route::get('/home-page', [DashboardController::class, 'homepage'])->name('home-page');
 Route::post('/homeedit', [DashboardController::class, 'homedatasubmit'])->name('home-edit');
+
 Route::get('/features', [DashboardController::class, 'features'])->name('features');
+Route::get('/addfeatures', [DashboardController::class, 'addfeatures'])->name('add-features');
+Route::post('/submitfeatures', [DashboardController::class, 'submitfeatures'])->name('sumbit-features');
+Route::get('/editfeatures/{id}', [DashboardController::class, 'editfeatures'])->name('edit-features');
+Route::post('/updatefeatures/{id}', [DashboardController::class, 'updatefeatures'])->name('update-features');
+Route::get('/deletefeatures/{id}', [DashboardController::class, 'deletefeatures'])->name('delete-features');
+
 Route::get('/testinomial', [TestinomialController::class, 'testinomial'])->name('testinomial');
 Route::get('/addtestinomial', [TestinomialController::class, 'addtestinomial'])->name('add-testinomial');
 Route::post('/submittestinomial', [TestinomialController::class, 'submittestinomial'])->name('submit-testinomial');
 Route::get('/edittestinomial/{id}', [TestinomialController::class, 'edittestinomial'])->name('edit-testinomial');
 Route::post('/updatetestinomial/{id}', [TestinomialController::class, 'updatetestinomial'])->name('update-testinomial');
+Route::get('/deletetestinomial/{id}', [TestinomialController::class, 'deletetestinomial'])->name('delete-testinomial');
+
 Route::get('/faqpage', [FaqpageController::class, 'faqpage'])->name('faqpage');
 Route::get('/faqs', [FaqpageController::class, 'faqs'])->name('faqs');
 Route::get('/aboutus', [AboutusController::class, 'aboutus'])->name('aboutus');

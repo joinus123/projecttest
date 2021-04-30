@@ -1,5 +1,6 @@
 @extends('admin.dashboard.master')
 
+
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -7,7 +8,15 @@
                 <div class="container-fluid">
                   <div>
                     <h1 style="display:inline-block;">
-                      Testimonials      </h1>
+                      Testimonials
+                     </h1>
+                     @if ($message = Session::get('success'))
+                     <div class="alert alert-success alert-block">
+                      <button type="button" class="close" data-dismiss="alert">×</button>
+                      <strong>{{ $message }}</strong>
+                     </div>
+                      <br>
+                     @endif
                     <h3 class="box-title" style="display:inline-block;">List</h3>
                   </div>
                   <a class="btn btn-info" href="{{ route('add-testinomial') }}">Add New</a>
@@ -27,8 +36,6 @@
                       </thead>
                       <tbody>
                     @foreach ($testinomial as $views)
-
-
                         <tr>
                           <td>{{ $views->id }}</td>
                           <td> {{ $views->testinomials_name }}</td>
@@ -47,7 +54,7 @@
 
                   </div>
                   <div class="box-footer">
-                    <a href="http://myprojectstaging.com/custom/whocares_dev/admin" class="btn btn-danger">Dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="btn btn-danger">Dashboard</a>
                   </div>
                 </div>
               </div>

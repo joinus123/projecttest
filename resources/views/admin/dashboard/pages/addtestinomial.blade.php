@@ -14,13 +14,15 @@
 
             <div class="form-group">
               <label> Testimonial <span class="dls">Name</span> </label>
-              <input type="name" class="form-control" id="testimonials_name" name="testimonials_name" required>
-                        </div>
+              <input type="name" class="form-control" id="testimonials_name" name="testimonials_name" >
+              <span class="text-danger">{{ $errors->first('testimonials_name') }}</span>
+            </div>
 
             <div class="form-group">
               <label>Testimonial<span class="dls"> Descripition</span> </label>
-              <textarea class="editor form-control" rows="3" id="testimonials_text" name="testimonials_text" required></textarea>
-                        </div>
+              <textarea class="editor form-control" rows="3" id="testimonials_text" name="testimonials_text" required="true"></textarea>
+              <span class="text-danger">{{ $errors->first('testimonials_text') }}</span>
+             </div>
 
                         <div class="row base-img-sec">
                             <div class="col-xl-4 col-lg-6">
@@ -37,8 +39,8 @@
         </div>
         <div class="box-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="http://myprojectstaging.com/custom/whocares_dev/admin" class="btn btn-danger">Dashboard</a>
-          <a href="http://myprojectstaging.com/custom/whocares_dev/admin/testimonials" class="btn btn-info">Cancel</a>
+          <a href="{{ route('dashboard') }}" class="btn btn-danger">Dashboard</a>
+          <a href="{{ route('testinomial') }}" class="btn btn-info">Cancel</a>
         </div>
       </form>
     </div>

@@ -5,43 +5,105 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Homepage;
 use App\Models\SiteSetting;
+use App\Models\Features;
 use Illuminate\Support\Facades\Redirect;
 
-class DashboardController extends Controller
-{
-    public function  dashboard(Request $request){
-        return view('admin.dashboard.pages.dashboard');
-    }
-    public function  features(Request $request){
-        return view('admin.dashboard.pages.features');
-    }
-    public function  homepage(Request $request){
-        $data['data']=Homepage::all();
+        class DashboardController extends Controller
+        {
+            public function  dashboard(Request $request){
+                return view('admin.dashboard.pages.dashboard');
+            }
+            public function  features(){
+            $view['view']=Features::all();
 
-        return view('admin.dashboard.pages.home-page',$data);
-    }
+
+                return view('admin.dashboard.pages.features',$view);
+            }
+            public function  addfeatures(Request $request){
+                return view('admin.dashboard.pages.addfeatures');
+            }
+            public function  editfeatures($id){
+            $edit['edit']=features::find($id);
+            return view('admin.dashboard.pages.editfeatures',$edit);
+            }
+            public function  homepage(Request $request){
+                $data['data']=Homepage::all();
+
+                return view('admin.dashboard.pages.home-page',$data);
+            }
+
+            public function  submitfeatures(Request $request){
+
+        //    dd($request);
+
+        $features = request()->validate([
+
+            'features_heading'=> 'required',
+            'features_description'=> 'required',
+
+          ]);
+
+         $features = [
+
+
+
+            'feature_heading'=>$request->features_heading,
+            'features_description'=>$request->features_description,
+
+         ];
+
+          Features::where('id',$request->id)->insert($features);
+          return redirect()->route('features')->withSuccess('Great! Data successfully insert with validation.');
+
+
+        }
+        public function updatefeatures(Request $request){
+
+
+
+
+            $features=Features::find($request->id);
+
+            $features->feature_heading= $request->features_heading;
+            $features->features_description= $request->features_description;
+
+
+
+            $features->save();
+            return redirect()->route('features',$request->id)->withSuccess('Great! Record Has been update successfully');
+ }
+ public function deletefeatures($id)
+ {
+  $delete=Features::find($id)->delete();
+
+  return  redirect()->route('features',$delete)->withSuccess('Great! Record Has been Delete successfully ');
+ }
+
+
+
+
     public function homedatasubmit(Request $request)
     {
 
 
-        //  $Homepage = request()->validate([
+         $Homepage = request()->validate([
 
-        // 	'section_one_logo'=> 'requied',
-        // 	'section_one_text'=> 'requied',
-        // 	'section_one_banner'=> 'requied',
-        // 	'section_one_box1_heading'=> 'requied',
-        //     'section_one_box1_text'=> 'requied',
-        // 	'section_one_box2_heading'=> 'requied',
-        // 	'section_one_box2_text'=> 'requied',
-        // 	'section_one_box3_heading'=> 'requied',
-        // 	'section_one_box3_text'=> 'requied',
-        // 	'section_two_heading'=> 'requied',
-        // 	'section_two_text'=> 'requied',
-        // 	'section_three_heading'=> 'requied',
-        // 	'section_three_image'=> 'requied',
-        // 	'section_four_heading'=> 'requied',
+        	'section_one_logo'=> 'requied',
+        	'section_one_text'=> 'requied',
+        	'section_one_banner'=> 'requied',
+        	'section_one_box1_heading'=> 'requied',
+            'section_one_box1_text'=> 'requied',
+        	'section_one_box2_heading'=> 'requied',
+        	'section_one_box2_text'=> 'requied',
+        	'section_one_box3_heading'=> 'requied',
+        	'section_one_box3_text'=> 'requied',
+        	'section_two_heading'=> 'requied',
+        	'section_two_text'=> 'requied',
+        	'section_three_heading'=> 'requied',
+        	'section_three_image'=> 'requied',
+        	'section_four_heading'=> 'requied',
 
-        //  ]);
+         ]);
 
 
 
