@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Homepage;
 use App\Models\SiteSetting;
+use App\Models\editprofile;
 use App\Models\Features;
 use Illuminate\Support\Facades\Redirect;
 
@@ -72,11 +73,11 @@ use Illuminate\Support\Facades\Redirect;
             $features->save();
             return redirect()->route('features',$request->id)->withSuccess('Great! Record Has been update successfully');
  }
- public function deletefeatures($id)
+            public function deletefeatures($id)
  {
-  $delete=Features::find($id)->delete();
+            $delete=Features::find($id)->delete();
 
-  return  redirect()->route('features',$delete)->withSuccess('Great! Record Has been Delete successfully ');
+            return  redirect()->route('features',$delete)->withSuccess('Great! Record Has been Delete successfully ');
  }
 
 
@@ -88,20 +89,20 @@ use Illuminate\Support\Facades\Redirect;
 
          $Homepage = request()->validate([
 
-        	'section_one_logo'=> 'requied',
-        	'section_one_text'=> 'requied',
-        	'section_one_banner'=> 'requied',
-        	'section_one_box1_heading'=> 'requied',
-            'section_one_box1_text'=> 'requied',
-        	'section_one_box2_heading'=> 'requied',
-        	'section_one_box2_text'=> 'requied',
-        	'section_one_box3_heading'=> 'requied',
-        	'section_one_box3_text'=> 'requied',
-        	'section_two_heading'=> 'requied',
-        	'section_two_text'=> 'requied',
-        	'section_three_heading'=> 'requied',
-        	'section_three_image'=> 'requied',
-        	'section_four_heading'=> 'requied',
+        	'section_one_logo'=> 'required',
+        	'section_one_text'=> 'required',
+        	'section_one_banner'=> 'required',
+        	'section_one_box1_heading'=> 'required',
+            'section_one_box1_text'=> 'required',
+        	'section_one_box2_heading'=> 'required',
+        	'section_one_box2_text'=> 'required',
+        	'section_one_box3_heading'=> 'required',
+        	'section_one_box3_text'=> 'required',
+        	'section_two_heading'=> 'required',
+        	'section_two_text'=> 'required',
+        	'section_three_heading'=> 'required',
+        	'section_three_image'=> 'required',
+        	'section_four_heading'=> 'required',
 
          ]);
 
@@ -161,7 +162,8 @@ use Illuminate\Support\Facades\Redirect;
 
     }
     public function  userprofile(Request $request){
-        return view('admin.dashboard.pages.userprofile');
+        $data['data']=editprofile::all();
+        return view('admin.dashboard.pages.userprofile',$data);
     }
     public function  sitesetting(){
         $data['data']=Sitesetting::all();
@@ -237,4 +239,38 @@ use Illuminate\Support\Facades\Redirect;
 
         return Redirect::route('admin')->with(['msg_type' => 'success', 'msg' => 'Logout Successfully']);
     }
-}
+
+    public function  updateprofile(Request $request){
+    $profile = [
+
+      'business_name'=> $request->business_name,
+      'username'=> $request->username,
+      'email_address'=> $request->email_address,
+      'address'=> $request->address,
+
+
+
+];
+
+    if($request->hasFile('profile_image')){
+    $path = $request->file('profile_image');
+    $path = $request->profile_image->store('public/media');
+    $path = basename($path);
+    $profile['profile_image']= $path;
+ }
+
+//
+
+ if($request->id)
+ {
+     editprofile::where('id',$request->id)->update($profile);
+
+ }
+         //dd($request->id);
+ else{
+     editprofile::where('id',$request->id)->insert($profile);
+ }
+ return redirect()->route('userprofile')->withSuccess('Great! Data successfully update with validation.');
+        }
+
+    }

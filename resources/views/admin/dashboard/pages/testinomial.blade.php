@@ -35,6 +35,9 @@
                         </tr>
                       </thead>
                       <tbody>
+
+
+
                     @foreach ($testinomial as $views)
                         <tr>
                           <td>{{ $views->id }}</td>
@@ -49,6 +52,7 @@
 
                         </tr>
                         @endforeach
+
                                 </tbody>
                     </table>
 

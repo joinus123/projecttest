@@ -25,7 +25,7 @@ use Inertia\Inertia;
 
 
 
-Route::get('/homepage', [AppController::class, 'homepage'])->name('homepage');
+Route::get('/', [AppController::class, 'homepage'])->name('homepage');
 Route::get('/aboutus', [AppController::class, 'aboutus'])->name('about-us');
 Route::get('/features', [AppController::class, 'features'])->name('view-features');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -41,6 +41,7 @@ Route::group(['middleware' => 'admin'],function(){
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 Route::get('/registry', [DashboardController::class, 'registry'])->name('registry');
 Route::get('/userprofile', [DashboardController::class, 'userprofile'])->name('userprofile');
+Route::post('/updateprofile', [DashboardController::class, 'updateprofile'])->name('profile');
 Route::get('/home-page', [DashboardController::class, 'homepage'])->name('home-page');
 Route::post('/homeedit', [DashboardController::class, 'homedatasubmit'])->name('home-edit');
 
@@ -59,7 +60,14 @@ Route::post('/updatetestinomial/{id}', [TestinomialController::class, 'updatetes
 Route::get('/deletetestinomial/{id}', [TestinomialController::class, 'deletetestinomial'])->name('delete-testinomial');
 
 Route::get('/faqpage', [FaqpageController::class, 'faqpage'])->name('faqpage');
+Route::post('/submitfaqpage', [FaqpageController::class, 'submitfaqpage'])->name('submit-faqpage');
 Route::get('/faqs', [FaqpageController::class, 'faqs'])->name('faqs');
+Route::get('/addformfaqs', [FaqpageController::class, 'addformfaqs'])->name('addform-faqs');
+Route::post('/submitfaqs', [FaqpageController::class, 'submitfaqs'])->name('submit-faqs');
+Route::get('/editfaqs/{id}', [FaqpageController::class, 'editfaqs'])->name('edit-faqs');
+Route::post('/updatefaqs/{id}', [FaqpageController::class, 'updatefaqs'])->name('update-faqs');
+Route::get('/deletefaqs/{id}', [FaqpageController::class, 'deletefaqs'])->name('delete-faqs');
+
 Route::get('/aboutus', [AboutusController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactus', [ContactusController::class, 'contactus'])->name('contact.us');
 Route::get('/socialmedialink', [ContactusController::class, 'socialmedialink'])->name('socialmedialink');
