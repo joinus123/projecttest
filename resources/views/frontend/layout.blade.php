@@ -66,13 +66,13 @@
                                     </li>
                                     <li class="nav-item">
 
-                                          <a href="" role="button" class="btn btn-default">Testimonials</a>
+                                          <a href="{{ route('view-testinomail') }}" role="button" class="btn btn-default">Testimonials</a>
 
 
                                     </li>
                                     <li class="nav-item">
 
-                                          <a href="" role="button" class="btn btn-default">Contact Us</a>
+                                          <a href="{{ route('view-contactus') }}" role="button" class="btn btn-default">Contact Us</a>
                                           <!--                                           <button class="btn btn-default dropdown-toggle dropdown-toggle-split d-none d-md-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                              <span class="sr-only">Toggle Dropdown</span>
                                              </button>
@@ -83,7 +83,7 @@
                                     </li>
                                     <li class="nav-item">
 
-                                          <a href="" role="button" class="btn btn-default">FAQ</a>
+                                          <a href="{{ route('view-faqs') }}" role="button" class="btn btn-default">FAQ</a>
                                           <!--                                           <button class="btn btn-default dropdown-toggle dropdown-toggle-split d-none d-md-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                              <span class="sr-only">Toggle Dropdown</span>
                                              </button>

@@ -76,11 +76,11 @@ class TestinomialController extends Controller
      $testinomial->save();
      return redirect()->route('testinomial',$request->id)->withSuccess('Great! Record Has been update successfully');
  }
- public function deletetestinomial(Request $request ,$id)
+     public function deletetestinomial(Request $request ,$id)
  {
-  $delete=Testinomial::find($id)->delete();
+     $delete=Testinomial::find($id)->delete();
 
-  return  redirect()->route('testinomial',$delete)->withSuccess('Great! Record Has been Delete successfully ');
+     return  redirect()->route('testinomial',$delete)->withSuccess('Great! Record Has been Delete successfully ');
  }
 
 }

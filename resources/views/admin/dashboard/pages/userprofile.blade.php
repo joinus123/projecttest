@@ -52,8 +52,10 @@
                                            <div class="d-flex justify-content-between base-{{asset('backend/assets')}}/images-sec">
                                               <label>Profile Image</label>
                                            </div>
+
                                            <img id="base_image" style="width:30%"class="cursor-pointer base_img  img-rounded " onclick="document.querySelector('#profile_image').click()"
-                                              src="{{asset('storage/media/'.$data[0]->profile_image)}}" alt="">
+                                              {{-- src="{{asset('storage/media/'.$data[0]->profile_image)}}" alt=""> --}}
+                                              src="{{asset('storage/media/'.$a=isset($data[0]->profile_image)?$data[0]->profile_image:NULL)}}" alt="">
                                            <input type="file" onchange="getFile(this)" name="profile_image"  class="hidden"  id="profile_image">
                                            <span class="text-danger">{{ $errors->first('footer_image') }}</span>
                                         </div>

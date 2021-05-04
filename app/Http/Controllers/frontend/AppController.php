@@ -19,4 +19,16 @@ class AppController extends Controller
     {
     return view('frontend.features.viewfeatures');
     }
+    public function testinomail()
+    {
+    return view('frontend.testinomail.viewtestinomail');
+    }
+    public function contactus()
+    {
+    return view('frontend.contactus.viewcontactus');
+    }
+    public function faqs()
+    {
+    return view('frontend.faqs.viewfaqs');
+    }
 }

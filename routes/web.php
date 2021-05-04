@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\FaqpageController;
 use App\Http\Controllers\admin\TestinomialController;
 use App\Http\Controllers\admin\ContactusController;
+use App\Http\Controllers\admin\RegisterController;
 use App\Http\Controllers\frontend\AppController;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -28,6 +29,9 @@ use Inertia\Inertia;
 Route::get('/', [AppController::class, 'homepage'])->name('homepage');
 Route::get('/aboutus', [AppController::class, 'aboutus'])->name('about-us');
 Route::get('/features', [AppController::class, 'features'])->name('view-features');
+Route::get('/testinomail', [AppController::class, 'testinomail'])->name('view-testinomail');
+Route::get('/contactus', [AppController::class, 'contactus'])->name('view-contactus');
+Route::get('/faqs', [AppController::class, 'faqs'])->name('view-faqs');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->name('dashboard');
@@ -39,7 +43,10 @@ Route::group(['middleware' => 'admin'],function(){
 
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
 Route::get('/registry', [DashboardController::class, 'registry'])->name('registry');
+Route::post('/updateregister', [RegisterController::class, 'updateregister'])->name('update-register');
+
 Route::get('/userprofile', [DashboardController::class, 'userprofile'])->name('userprofile');
 Route::post('/updateprofile', [DashboardController::class, 'updateprofile'])->name('profile');
 Route::get('/home-page', [DashboardController::class, 'homepage'])->name('home-page');
@@ -69,7 +76,12 @@ Route::post('/updatefaqs/{id}', [FaqpageController::class, 'updatefaqs'])->name(
 Route::get('/deletefaqs/{id}', [FaqpageController::class, 'deletefaqs'])->name('delete-faqs');
 
 Route::get('/aboutus', [AboutusController::class, 'aboutus'])->name('aboutus');
+Route::post('/submitaboutus', [AboutusController::class, 'submitaboutus'])->name('submit-aboutus');
+
 Route::get('/contactus', [ContactusController::class, 'contactus'])->name('contact.us');
+Route::post('/updatecontact', [ContactusController::class, 'updatecontact'])->name('update-contact');
+
+
 Route::get('/socialmedialink', [ContactusController::class, 'socialmedialink'])->name('socialmedialink');
 Route::get('/sitesetting', [DashboardController::class, 'sitesetting'])->name('site.setting');
 Route::post('/sitesettingadd', [DashboardController::class, 'sitesettingadd'])->name('sitesetting-add');
