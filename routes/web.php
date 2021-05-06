@@ -25,16 +25,16 @@ use Inertia\Inertia;
 */
 
 
-
+Route::get('/layout', [AppController::class, 'layout'])->name('layout');
 Route::get('/', [AppController::class, 'homepage'])->name('homepage');
 Route::get('/aboutus', [AppController::class, 'aboutus'])->name('about-us');
 Route::get('/features', [AppController::class, 'features'])->name('view-features');
 Route::get('/testinomail', [AppController::class, 'testinomail'])->name('view-testinomail');
 Route::get('/contactus', [AppController::class, 'contactus'])->name('view-contactus');
 Route::get('/faqs', [AppController::class, 'faqs'])->name('view-faqs');
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->name('dashboard');
+Route::get('/show/register', [AppController::class, 'register'])->name('showregister');
+Route::get('/show/profile', [AppController::class, 'profile'])->name('show-profile');
+
 Route::prefix('signin')->group(function() {
 Route::get('/', [SigninController::class, 'loginForm'])->name('loginform');
 Route::get('/forgetpassword', [SigninController::class, 'forgetpassword'])->name('forgetpassword');
@@ -44,7 +44,7 @@ Route::group(['middleware' => 'admin'],function(){
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/registry', [DashboardController::class, 'registry'])->name('registry');
+Route::get('/registry', [RegisterController::class, 'registry'])->name('registry');
 Route::post('/updateregister', [RegisterController::class, 'updateregister'])->name('update-register');
 
 Route::get('/userprofile', [DashboardController::class, 'userprofile'])->name('userprofile');

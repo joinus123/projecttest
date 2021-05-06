@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers\frontend;
 use  App\Http\Controllers\Controller;
-
+use App\Models\Homepage;
+use App\Models\Sitesetting;
+use App\Models\Features;
+use App\Models\Testinomial;
 use Illuminate\Http\Request;
 
 class AppController extends Controller
 {
     public function homepage()
     {
-    return view('frontend.homepage');
+    $homepage=Homepage::all();
+    $features=Features::all();
+    $testinomial=Testinomial::all();
+    return view('frontend.homepage')->with(['homepage'=>$homepage,'features'=>$features,'testinomial'=>$testinomial]);
     }
     public function aboutus()
     {
@@ -17,11 +23,14 @@ class AppController extends Controller
     }
     public function features()
     {
-    return view('frontend.features.viewfeatures');
+    $features=Features::all();
+    $homepage=Homepage::all();
+    return view('frontend.features.viewfeatures')->with(['features'=>$features,'homepage'=>$homepage]);
     }
     public function testinomail()
     {
-    return view('frontend.testinomail.viewtestinomail');
+        $testinomial=Testinomial::all();
+        return view('frontend.testinomail.viewtestinomail')->with('testinomial',$testinomial);
     }
     public function contactus()
     {
@@ -31,4 +40,13 @@ class AppController extends Controller
     {
     return view('frontend.faqs.viewfaqs');
     }
+    public function register()
+    {
+    return view('frontend.register.viewregister');
+    }
+    public function profile()
+    {
+    return view('frontend.profile');
+    }
+
 }

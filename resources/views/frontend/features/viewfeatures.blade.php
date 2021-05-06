@@ -33,49 +33,43 @@
           </div>
        </div>
        <div class="row">
+
               <div class="col-md-4 offset-md-4">
-             <h4>Any time, any event</h4>
-             <p>Whether you are going through a tough time or a celebration, we will be here for you with any help you require.</p>
+                <h4>{{$features[0]->feature_heading}}</h4>
+                {!! $features[0]->features_description !!}
           </div>
                                                                                                                                                                                                                             </div>
        <div class="row">
 
          <div class="col-md-3 col-sm-12">
-               <div class="single_service service_right">
-                <h4>We are diverse and adaptive </h4>
-                <p>Diversity is a key focus of our service as we cater to all kinds of individuals and are able to tailor our assistance accordingly.</p>
-             </div>
-                                                              <div class="single_service service_right">
-                <h4>We believe in better living</h4>
-                <p>Life should not just be one miserable day after another. We want you to live better, every day, no matter what you situation is.</p>
-             </div>
-                                                              <div class="single_service service_right">
-                <h4>We build a community</h4>
-                <p>What we offer is not only bringing families together but is also ensuring that a tight knit community is being created.</p>
-             </div>
-
-          </div>
+            @foreach ($features as $key => $feature)
+            <?php if($key > 0 && $key <=3 ):?>
+            <div class="single_service service_right">
+            <h4>{{$feature->feature_heading}} </h4>
+            {!! $feature->features_description !!}
+            </div>
+            <?php endif;?>
+            @endforeach
+        </div>
           <div class="col-md-6 col-sm-12 text-center">
              <div class="single_mid">
-                <img src="http://myprojectstaging.com/custom/whocares_dev/uploads/home_page/tree-img.png" alt="tree image" class="img-fluid m-width width-none">
+                <img src="{{ asset('storage/media/'.$homepage[0]->section_three_image) }}" alt="tree image" class="img-fluid m-width width-none">
              </div>
           </div>
           <div class="col-md-3 col-sm-12">
 
              <div class="single_service">
-                <h4>Our help is not limited</h4>
-                <p>From our services you will see that there is no limit to what we can help you with. Whatever you need, you will receive.</p>
+                @foreach ($features as $key => $feature)
+                <?php if($key > 3 && $key <=6 ):?>
+               <div class="single_service">
+                   <h4>{{$feature->feature_heading}} </h4>
+                   {!! $feature->features_description !!}
+               </div>
+               <?php endif;?>
+               @endforeach
              </div>
 
-             <div class="single_service">
-                <h4>We care about your loved ones</h4>
-                <p>We are not a company that cares about profits and success: we are here for your loved ones and the big moments in their lives.&nbsp;</p>
-             </div>
 
-             <div class="single_service">
-                <h4>We are a free service</h4>
-                <p>We provide all our services at no cost to you or to your family and friends.&nbsp;<span style="font-size:11pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif"><span georgia="" lang="EN" style="font-family:"> </span></span></span></span></p>
-             </div>
 
           </div>
        </div>

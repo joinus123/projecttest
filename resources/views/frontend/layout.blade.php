@@ -144,6 +144,7 @@
       </header>
 @yield('content')
       <footer>
+
         <div class="copy-r p-tb-100">
            <div class="container">
               <div class="row">
@@ -160,15 +161,15 @@
                  <div class="col-md-3 pt-40">
                     <h4>QUICK LINKS</h4>
                     <p><a href="{{ route('homepage') }}">HOME</a></p>
-                    <p><a href="">MESSAGE</a></p>
-                    <p><a href="">REGISTRY</a></p>
-                    <p><a href="">PROFILE</a></p>
+                    <p><a href="#">MESSAGE</a></p>
+                    <p><a href="{{ route('showregister') }}">REGISTRY</a></p>
+                    <p><a href="{{ route('show-profile') }}">PROFILE</a></p>
                     <p><a href="#">MANAGE PROFILE</a></p>
                  </div>
                  <div class="col-md-3 pt-40">
                     <h4 style="visibility: hidden;">QUICK LINKS</h4>
-                    <p><a href="">CONTACT US</a></p>
-                    <p><a href="">FAQ</a></p>
+                    <p><a href="{{ route('view-contactus') }}">CONTACT US</a></p>
+                    <p><a href="{{ route('view-faqs') }}">FAQ</a></p>
 <!--                      <p><a href="#">FAQ</a></p>
                     <p><a href="#">EVENTS</a></p>
                     <p><a href="#">MANAGE EVENTS</a></p> -->

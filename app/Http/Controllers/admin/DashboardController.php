@@ -54,25 +54,22 @@ return  redirect()->route('features',$delete)->withSuccess('Great! Record Has be
 }
 public function homedatasubmit(Request $request)
 {
+    // dd($request->all());
 $Homepage = request()->validate([
-'section_one_logo'=> 'required',
 'section_one_text'=> 'required',
-'section_one_banner'=> 'required',
-'section_one_box1_heading'=> 'required',
-'section_one_box1_text'=> 'required',
-'section_one_box2_heading'=> 'required',
-'section_one_box2_text'=> 'required',
-'section_one_box3_heading'=> 'required',
-'section_one_box3_text'=> 'required',
+'section_one_box_one_heading'=> 'required',
+'section_one_box_one_text'=> 'required',
+'section_one_box_two_heading'=> 'required',
+'section_one_box_two_text'=> 'required',
+'section_one_box_three_heading'=> 'required',
+'section_one_box_three_text'=> 'required',
 'section_two_heading'=> 'required',
 'section_two_text'=> 'required',
 'section_three_heading'=> 'required',
-'section_three_image'=> 'required',
 'section_four_heading'=> 'required',
 ]);
 $Homepage = [
 'section_one_text'=>$request->section_one_text,
-'section_one_banner'=>$request->section_one_banner,
 'section_one_box1_heading'=>$request->section_one_box_one_heading,
 'section_one_box1_text'=>$request->section_one_box_one_text,
 'section_one_box2_heading'=>$request->section_one_box_two_heading,
@@ -82,6 +79,7 @@ $Homepage = [
 'section_two_heading'=>$request->section_two_heading,
 'section_two_text'=>$request->section_two_text,
 'section_three_heading'=>$request->section_three_heading,
+'section_four_heading'=>$request->section_four_heading,
 ];
 if($request->hasFile('section_one_logo_img')){
 $path = $request->file('section_one_logo_img');
@@ -101,6 +99,7 @@ $path = $request->section_three_img->store('public/media');
 $path2 = basename($path);
 $Homepage['section_three_image'] = $path2;
 }
+
 if($request->id)
 {
 Homepage::where('home_page_id',$request->id)->update($Homepage);
@@ -165,9 +164,7 @@ Sitesetting::where('id',$request->id)->insert($Sitesetting);
 //   dd($Homepage);
 return redirect()->route('site.setting')->withSuccess('Great! Data successfully update with validation.');
 }
-public function  registry(Request $request){
-return view('admin.dashboard.pages.registry');
-}
+
 public function logout(){
 session()->forget('admin');
 return Redirect::route('admin')->with(['msg_type' => 'success', 'msg' => 'Logout Successfully']);

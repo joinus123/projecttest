@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
+    public function  registry(Request $request)
+    {
+        $register['register']=Register::all();
+        return view('admin.dashboard.pages.registry',$register);
+   }
+
+
     public function  updateregister(Request $request){
 
         $register = [

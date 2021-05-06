@@ -134,7 +134,7 @@
                   <div class="box-footer">
                       <input type="hidden" name="id" value="<?php if(isset($data[0]->home_page_id)){ echo $data[0]->home_page_id;}?>">
                      <button type="submit" class="btn btn-primary"><?php if(isset($data[0]->home_page_id)){echo "UPDATE";}else{echo "Submit";}?></button>
-                     <a href="" class="btn btn-danger">Dashboard</a>
+                     <a href="{{ route('dashboard') }}" class="btn btn-danger">Dashboard</a>
                   </div>
                </form>
             </div>

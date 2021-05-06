@@ -44,75 +44,29 @@
                 <div class="carousel-inner">
                    <div class="carousel-item active">
                       <div class="row">
+                        @foreach ($testinomial as $data)
                          <div class="col-md-6">
                             <div class="row test-slide">
+
+
+
                                <div class="col-md-3">
-                                  <img src="http://myprojectstaging.com/custom/whocares_dev/assets/front/images/test-img-1.png" alt="" class="img-fluid">
+                                  <img src="{{asset('storage/media/'.$data->testinomials_image)}}" alt="" class="img-fluid">
                                </div>
                                <div class="col-md-9">
-                                  <h4>Jan Levinson</h4>
-                                  <p>“Who Cares helped me with my dog when I was severely ill. They made sure he was well fed and groomed until I could resume my responsibilities. Thanks guys!”.</p>
+
+                                  <h4>{{ $data->testinomials_name }}</h4>
+                                  {!! $data->testinomials_text !!}
+
                                </div>
                             </div>
                          </div>
-                         <div class="col-md-6">
-                            <div class="row test-slide">
-                               <div class="col-md-3">
-                                  <img src="http://myprojectstaging.com/custom/whocares_dev/assets/front/images/test-img-2.png" alt="" class="img-fluid">
-                               </div>
-                               <div class="col-md-9">
-                                  <h4>Melody Summers</h4>
-                                  <p>“I was so worried for my baby shower that I did not have time to make a registry. Who Cares really came through for me and I got some great items from my guests.”.</p>
-                               </div>
-                            </div>
-                         </div>
-                         <div class="col-md-6">
-                            <div class="row test-slide">
-                               <div class="col-md-3">
-                                  <img src="http://myprojectstaging.com/custom/whocares_dev/assets/front/images/test-img-3.png" alt="" class="img-fluid">
-                               </div>
-                               <div class="col-md-9">
-                                  <h4>Edward Gardner</h4>
-                                  <p>“It was a difficult time for me when my wife died. Who Cares linked me to a well-known counselling service and I have been doing much better because of their help.”.</p>
-                               </div>
-                            </div>
-                         </div>
-                         <div class="col-md-6">
-                            <div class="row test-slide">
-                               <div class="col-md-3">
-                                  <img src="http://myprojectstaging.com/custom/whocares_dev/assets/front/images/test-img-1.png" alt="" class="img-fluid">
-                               </div>
-                               <div class="col-md-9">
-                                  <h4>Jan Levinson</h4>
-                                  <p>“Who Cares helped me with my dog when I was severely ill. They made sure he was well fed and groomed until I could resume my responsibilities. Thanks guys!”.</p>
-                               </div>
-                            </div>
-                         </div>
-                         <div class="col-md-6">
-                            <div class="row test-slide">
-                               <div class="col-md-3">
-                                  <img src="http://myprojectstaging.com/custom/whocares_dev/assets/front/images/test-img-2.png" alt="" class="img-fluid">
-                               </div>
-                               <div class="col-md-9">
-                                  <h4>Melody Summers</h4>
-                                  <p>“I was so worried for my baby shower that I did not have time to make a registry. Who Cares really came through for me and I got some great items from my guests.”.</p>
-                               </div>
-                            </div>
-                         </div>
-                         <div class="col-md-6">
-                            <div class="row test-slide">
-                               <div class="col-md-3">
-                                  <img src="http://myprojectstaging.com/custom/whocares_dev/assets/front/images/test-img-3.png" alt="" class="img-fluid">
-                               </div>
-                               <div class="col-md-9">
-                                  <h4>Edward Gardner</h4>
-                                  <p>“It was a difficult time for me when my wife died. Who Cares linked me to a well-known counselling service and I have been doing much better because of their help.”.</p>
-                               </div>
+                         @endforeach
+
                             </div>
                          </div>
                       </div>
-                      <!--.row-->
-                   </div>
+                 </div>
                 </div>
              </div>
           </div>
